@@ -14,12 +14,12 @@ public class SelectionFrame extends JFrame {
         // Exit when window is closed
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ct.setBackground(Color.BLUE);
+        ct.setBackground(Color.white);
         ct.setLayout(new FlowLayout());
 
         // create start panel
         JPanel mP = new JPanel();
-        mP.setBackground(Color.BLUE);
+        mP.setBackground(Color.white);
         mP.setLayout(new FlowLayout());
         // add start panel to content pane
         ct.add(mP);
@@ -31,7 +31,7 @@ public class SelectionFrame extends JFrame {
 
         // create mazeSelectionPanel
         JPanel mSP = new JPanel();
-        mSP.setBackground(Color.BLUE);
+        mSP.setBackground(Color.white);
         mSP.setLayout(new FlowLayout());
 
         JButton selectionButton = new JButton("Maze Selection");

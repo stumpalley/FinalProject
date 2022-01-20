@@ -51,6 +51,7 @@ public class StartPanel extends JPanel {
           }
 		g.fillPolygon(whiteX,whiteY,6);
 		g.setColor(Color.black);
+		g.drawPolygon(whiteX,whiteY,6);
 		int[] blackX = new int[]{112,37,58,50,10,105};
 		int[]blackY = new int[]{193,193,155,139,210,210};
         for (int i=0; i<blackX.length; i++) {
