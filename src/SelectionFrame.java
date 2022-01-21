@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class SelectionFrame extends JFrame {
     
-	private Container ct = getContentPane();
+	public Container ct = getContentPane();
 
     public SelectionFrame() {
 
@@ -40,7 +40,7 @@ public class SelectionFrame extends JFrame {
 
         ct.add(mSP);
 
-        MazeSelectionPanel sp = new MazeSelectionPanel(selectionButton);
+        SelectionPanel sp = new SelectionPanel(selectionButton, this);
 
         selectionButton.addActionListener(sp);
     }
