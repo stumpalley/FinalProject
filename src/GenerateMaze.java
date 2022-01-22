@@ -8,7 +8,7 @@ public class GenerateMaze extends JPanel{
         maze = selection;
     }
 
-    public void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         g.setColor(Color.black);
         int[] x ={4, 104, 104, 4};
         int[] y ={4, 4, 104, 104};

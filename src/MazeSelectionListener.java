@@ -19,6 +19,7 @@ public class MazeSelectionListener extends JFrame implements ActionListener {
         if (action.equals("Maze 1")) {
             
             selection = new Maze1();
+            selection.init();
             MazeFrame frame = new MazeFrame(selection);
             frame.pack();
             frame.setVisible(true);

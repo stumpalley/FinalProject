@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOError;
 import java.util.concurrent.Flow;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Maze {
+public abstract class Maze {
     private int mazeHeight;
     private int mazeWidth;
 
@@ -22,4 +24,18 @@ public class Maze {
     public int getWidth() {
         return mazeWidth;
     }
+
+    public void setHeight(int h) {
+        mazeHeight = h;
+    }
+
+    public void setWidth(int w) {
+        mazeWidth = w;
+    }
+
+    public abstract void init();
+
+    public abstract int[][] getBoard();
+
+    public abstract int getDirection(int h, int w);
 }

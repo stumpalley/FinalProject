@@ -15,8 +15,9 @@ public class MazePanel extends JPanel{
         color = col;
     }
 
-    public void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         g.setColor(color);
-        g.fillRect(50, 50, 200, 200);
+        
+        g.fillRect(50, 50, 600, 200);
     }
 }
