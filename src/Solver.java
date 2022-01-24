@@ -69,9 +69,10 @@ public class Solver {
             
             State next = new State(loc, node);
             
-
+            
             node.addChild(next);
-
+            
+            visited.add(next);
             last = next;
             
             if (loc.getX() == maze.getGoalX() && loc.getY() == maze.getGoalY()) {
@@ -79,9 +80,8 @@ public class Solver {
                 last = next;
                 return true;
             }
-            if (!hasVisit(loc)){
-                theQ.enqueue(next);
-            }
+            theQ.enqueue(next);
+            
         }
         //System.out.println(3);
         return false;

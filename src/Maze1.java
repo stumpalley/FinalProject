@@ -19,7 +19,7 @@ public class Maze1 extends Maze {
         super(7, 7);
         setType(1);
         setGoal(6, 6);
-        setStart(4, 4); // breaks after 1,0
+        setStart(0, 0); // breaks after 1,0
     }
 
     public void init() {
