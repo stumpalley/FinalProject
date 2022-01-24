@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class MazeSelectionListener extends JFrame implements ActionListener {
     private Maze selection;
-    private SelectionFrame frame;
+    private JFrame frame;
 
-    public MazeSelectionListener(SelectionFrame fr) {
+    public MazeSelectionListener(JFrame fr) {
         frame = fr;
     } 
 

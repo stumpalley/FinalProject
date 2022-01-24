@@ -6,9 +6,14 @@ import javax.swing.*;
 public class MazeFrame extends JFrame {
     private Container ct = getContentPane();
     private Maze maze;
+    private JPanel text = new JPanel();
+    private JLabel label = new JLabel("Keep Playing");
+    
+    private JButton[][] mazeButtons;
 
     public MazeFrame(Maze selection) {
         maze = selection;
+
         // Exit when window is closed
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -19,29 +24,49 @@ public class MazeFrame extends JFrame {
         mazeJPanel.setBackground(Color.white);
 
         mazeJPanel.setLayout(new GridLayout(maze.getWidth(),maze.getHeight()));
-        ct.add(mazeJPanel);
 
-        int count = 0;
+        ct.add(mazeJPanel);
+        mazeButtons = maze.createButton();
         for (int i = 0; i < maze.getHeight(); i++){
             for (int j = 0; j < maze.getWidth(); j++) {
-                JButton button = new JButton("" + maze.getDirection(i,j));
-                button.setOpaque(true);
-                button.setPreferredSize(new Dimension(100,100));
-                if (count == 0) {
-                    button.setBackground(new Color(255,41,39));
-                }
-                else if (count % 2 == 0) {
-                    button.setBackground(new Color(144,238,144));
-                }
-                else if (count % 2 == 1) {
-                    button.setBackground(new Color(135,206,235));
-                }
-                button.setForeground(Color.black);
-                mazeJPanel.add(button);
-                count++;
+                mazeJPanel.add(mazeButtons[i][j]);
+                
+                PlayListener l = new PlayListener(this, i, j);
+                mazeButtons[i][j].addActionListener(l);
             }
             
         }
 
+        // create mazeSelectionPanel
+        JPanel mSP = new JPanel();
+        mSP.setBackground(Color.white);
+        mSP.setLayout(new FlowLayout());
+        mSP.add(label);
+
+        JButton selectionButton = new JButton("Maze Selection");
+
+        mSP.add(selectionButton);
+
+
+        ct.add(mSP);
+
+        SelectionPanel sp = new SelectionPanel(selectionButton, this);
+
+        selectionButton.addActionListener(sp);
+
+
+
+    }
+
+    public JButton[][] getMazeButtons() {
+        return mazeButtons;
+    }
+
+    public Maze getMaze() {
+        return maze;
+    }
+
+    public void setWin() {
+        label.setText("You win!");
     }
 }

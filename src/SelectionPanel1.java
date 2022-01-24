@@ -2,18 +2,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 
 
-public class SelectionPanel implements ActionListener {
+public class SelectionPanel1 implements ActionListener {
     private JButton changer;
     JPopupMenu menu;
-    private JFrame frame;
+    private MazeFrame frame;
 
-    public SelectionPanel(JButton selectionButton, JFrame fr) {
+    public SelectionPanel1(JButton selectionButton, MazeFrame fr) {
         changer = selectionButton;
         frame = fr;
         MazeSelectionListener listener = new MazeSelectionListener(frame);

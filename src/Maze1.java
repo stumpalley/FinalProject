@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.*;
 
@@ -14,51 +11,85 @@ public class Maze1 extends Maze {
                             {4 ,4, 4 ,2 ,3, 2, 4},
                             {2 ,5, 4, 2 ,3 ,2, 5},
                             {3, 5, 2, 1, 4, 4, 0}};
-    private int startX;
-    private int startY;
-    private int goalX;
-    private int goalY;
+    private int[] start = {0,0};
+    private int[] goal = {6,6};
+    private Location[][] locations = new Location[getHeight()][getWidth()];
+    private Information[][] info = new Information[getHeight()][getWidth()];
+    private int[][] directions = new int[4][2];
 
     public Maze1() {
         super(7, 7);
+        setType(1);
     }
 
     public void init() {
-        
-        /* Scanner reader = new Scanner("Maze.txt");
-
-        // set dimensions
-        int h, w;
-        h = reader.nextInt(); w = reader.nextInt();
-        setHeight(h); setWidth(w);
-
-        // import board
-
+        setNumDirections(4);
         for (int i = 0; i < getWidth(); i++) {
-            for (int  j = 0; j < getHeight(); j++) {
-                board[i][j] = reader.nextInt();
+            for (int j = 0; j < getHeight(); j++) {
+                Information in = new Information(i,j,this);
+                Location loc = new Location(i,j, in);
+                locations[i][j] = loc;
+                info[i][j] = in;
+                
             }
         }
 
-        startX = reader.nextInt();
-        startY = reader.nextInt();
-        goalX = reader.nextInt();
-        goalY = reader.nextInt();
-
-        // set up possible squares */
+        // set status
+        locations[3][6].setStatus(0);
+        locations[6][6].setStatus(2);
 
 
+    }
+
+    public int[] getGoal() {
+        return goal;
     }
 
     public int[][] getBoard() {
         return board;
     }
 
-    public int getDirection(int h, int w) {
-        return board[h][w];
+    public int getValue(int w, int h) {
+        return board[w][h];
     }
-/* 
-    public JButton test(int h, int w) {
-        JButton jb = 
-    } */
+
+    public Information getInfoAt(int x, int y) {
+        return info[x][y];
+    }
+
+    public Location getLocationAt(int x, int y) {
+        return locations[x][y];
+    }
+
+    public JButton[][] createButton() {
+        int count = 0;
+        JButton[][] buttons = new JButton[getHeight()][getWidth()];
+        for (int i = 0; i < getHeight(); i++){
+            for (int j = 0; j < getWidth(); j++) {
+                JButton button = new JButton("" + locations[i][j].getInfo().getNumToMove());
+                button.setOpaque(true);
+                button.setPreferredSize(new Dimension(100,100));
+                if (count == 0) {
+                    button.setBackground(new Color(255,41,39));
+                }
+                else if (count % 2 == 0) {
+                    button.setBackground(new Color(144,238,144));
+                }
+                else if (count % 2 == 1) {
+                    button.setBackground(new Color(135,206,235));
+                }
+                button.setForeground(Color.black);
+                buttons[i][j] = button;
+                button.setEnabled(false);
+                count++;
+
+            }
+            
+        }
+
+        buttons[start[0]][start[1]].setEnabled(true);
+        
+
+        return buttons;
+    } 
 }
