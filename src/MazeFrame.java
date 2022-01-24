@@ -43,12 +43,20 @@ public class MazeFrame extends JFrame {
         mSP.setLayout(new FlowLayout());
         mSP.add(label);
 
+        JButton solutionButton = new JButton("Show Solution");
+
+        mSP.add(solutionButton);
+
         JButton selectionButton = new JButton("Maze Selection");
 
         mSP.add(selectionButton);
 
 
         ct.add(mSP);
+
+        SolutionListener sl = new SolutionListener(maze, this);
+
+        solutionButton.addActionListener(sl);
 
         SelectionPanel sp = new SelectionPanel(selectionButton, this);
 
@@ -68,5 +76,9 @@ public class MazeFrame extends JFrame {
 
     public void setWin() {
         label.setText("You win!");
+    }
+
+    public void setSolution() {
+        label.setText("Remember this solution!");
     }
 }

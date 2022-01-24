@@ -11,8 +11,6 @@ public class Maze1 extends Maze {
                             {4 ,4, 4 ,2 ,3, 2, 4},
                             {2 ,5, 4, 2 ,3 ,2, 5},
                             {3, 5, 2, 1, 4, 4, 0}};
-    private int[] start = {0,0};
-    private int[] goal = {6,6};
     private Location[][] locations = new Location[getHeight()][getWidth()];
     private Information[][] info = new Information[getHeight()][getWidth()];
     private int[][] directions = new int[4][2];
@@ -20,6 +18,8 @@ public class Maze1 extends Maze {
     public Maze1() {
         super(7, 7);
         setType(1);
+        setGoal(6, 6);
+        setStart(4, 4); // breaks after 1,0
     }
 
     public void init() {
@@ -39,10 +39,6 @@ public class Maze1 extends Maze {
         locations[6][6].setStatus(2);
 
 
-    }
-
-    public int[] getGoal() {
-        return goal;
     }
 
     public int[][] getBoard() {
@@ -87,7 +83,7 @@ public class Maze1 extends Maze {
             
         }
 
-        buttons[start[0]][start[1]].setEnabled(true);
+        buttons[getStartX()][getStartY()].setEnabled(true);
         
 
         return buttons;

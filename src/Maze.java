@@ -7,6 +7,8 @@ public abstract class Maze {
     private int mazeWidth;
     private int numDirections;
     private int type = 0;
+    private int[] start = new int[2];
+    private int[] goal = new int[2];
 
     public Maze(int height, int width) {
         mazeHeight = height;
@@ -25,7 +27,31 @@ public abstract class Maze {
     
     public abstract Location getLocationAt(int x, int y);
 
-    public abstract int[] getGoal();
+    public int getGoalX() {
+        return goal[0];
+    }
+
+    public int getGoalY(){
+        return goal[1];
+    }
+
+    public int getStartX() {
+        return start[0];
+    }
+
+    public int getStartY() { 
+        return start[1];
+    }
+
+    public void setStart(int x, int y) {
+        start[0] = x;
+        start[1] = y;
+    }
+
+    public void setGoal(int x, int y) {
+        goal[0] = x;
+        goal[1] = y;
+    }
 
     public int getHeight() {
         return mazeHeight;

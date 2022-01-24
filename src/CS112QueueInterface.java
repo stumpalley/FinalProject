@@ -3,12 +3,14 @@ public interface CS112QueueInterface {
 
 	void writeQueue();
 
-	void enqueue(int j);
+	void enqueue(State j);
 
-	int dequeue();
+	State dequeue();
 
 	boolean isEmpty();
 	
-	int peek();
+	State peek();
+
+	int getCount();
 
 }

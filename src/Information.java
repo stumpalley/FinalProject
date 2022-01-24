@@ -3,12 +3,13 @@ public class Information {
     private int[][] directions;
     private Maze maze;
     private int status;
-    private int[] goal;
+    private int[] goal = new int[2];
 
     public Information(int x, int y, Maze input) {
         maze = input;
         numToMove = maze.getValue(x, y);
-        goal = maze.getGoal();
+        goal[0] = maze.getGoalX();
+        goal[1] = maze.getGoalY();
         directions = makeDirectionMatrix(input.getNumDirections(), numToMove);
         if (x == goal[0] && y == goal[1]) {
             status = 2;

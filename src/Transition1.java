@@ -26,7 +26,8 @@ public class Transition1 implements TransitionInterface {
         newY = currLoc.getY() + directions[direction][1];
         if (newX >= 0 && newY >= 0){
             if(newX <= 6 && newY <= 6) {
-                nextLoc = new Location(newX, newY, currLoc.getInfo().getMaze().getInfoAt(newX, newY));
+                // nextLoc = new Location(newX, newY, currLoc.getInfo().getMaze().getInfoAt(newX, newY));
+                nextLoc = st.getInfo().getMaze().getLocationAt(newX, newY);
             }
         }
     }
@@ -34,6 +35,14 @@ public class Transition1 implements TransitionInterface {
     public Location getNextLocation() {
         
         return nextLoc;
+    }
+
+    public Location getCurrLocation() {
+        return currLoc;
+    }
+
+    public State getCurrState() {
+        return st.getParent();
     }
 
     public State getNextState() {

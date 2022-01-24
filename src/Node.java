@@ -107,10 +107,11 @@ public class Node<V> {
 
 
 
-	public void print() {
-		System.out.println(name);
+	public V print() {
+		
 		if (getNext() != null)
 			getNext().print();
+		return name;
 	}
 
 
