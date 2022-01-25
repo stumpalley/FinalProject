@@ -1,5 +1,5 @@
 
-
+import java.awt.Color;
 import javax.swing.*;
 
 public abstract class Maze {
@@ -21,11 +21,17 @@ public abstract class Maze {
 
     public abstract int[][] getBoard();
 
+    public abstract int getBoardDataAt(int x, int y);
+
     public abstract JButton[][] createButton();
 
     public abstract Information getInfoAt(int x, int y);
     
     public abstract Location getLocationAt(int x, int y);
+
+    public abstract Color getCurrLocColor(int x, int y);
+
+    public abstract int getNumDirections();
 
     public int getGoalX() {
         return goal[0];
@@ -81,7 +87,5 @@ public abstract class Maze {
         numDirections = i;
     }
 
-    public int getNumDirections() {
-        return numDirections;
-    }
+    
 }

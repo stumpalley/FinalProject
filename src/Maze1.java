@@ -14,6 +14,8 @@ public class Maze1 extends Maze {
     private Location[][] locations = new Location[getHeight()][getWidth()];
     private Information[][] info = new Information[getHeight()][getWidth()];
     private int[][] directions = new int[4][2];
+    private Color mainColor = Color.black;
+    private int numDirections = 4;
 
     public Maze1() {
         super(7, 7);
@@ -45,6 +47,10 @@ public class Maze1 extends Maze {
         return board;
     }
 
+    public int getBoardDataAt(int x, int y) {
+        return board[x][y];
+    }
+
     public int getValue(int w, int h) {
         return board[w][h];
     }
@@ -55,6 +61,14 @@ public class Maze1 extends Maze {
 
     public Location getLocationAt(int x, int y) {
         return locations[x][y];
+    }
+
+    public Color getCurrLocColor(int x, int y) {
+        return mainColor;
+    }
+
+    public int getNumDirections() {
+        return numDirections;
     }
 
     public JButton[][] createButton() {
@@ -84,7 +98,7 @@ public class Maze1 extends Maze {
         }
 
         buttons[getStartX()][getStartY()].setEnabled(true);
-        
+        buttons[getGoalX()][getGoalY()].setText("GOAL");
 
         return buttons;
     } 

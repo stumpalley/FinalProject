@@ -8,11 +8,13 @@ public class MazeFrame extends JFrame {
     private Maze maze;
     private JPanel text = new JPanel();
     private JLabel label = new JLabel("Keep Playing");
+    private Location currentLocation;
     
     private JButton[][] mazeButtons;
 
     public MazeFrame(Maze selection) {
         maze = selection;
+        currentLocation = maze.getLocationAt(maze.getStartX(), maze.getStartY());
 
         // Exit when window is closed
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,5 +82,13 @@ public class MazeFrame extends JFrame {
 
     public void setSolution() {
         label.setText("Remember this solution!");
+    }
+
+    public void setLocation(Location l) {
+        currentLocation = l;
+    }
+
+    public Location getCurrLocation() {
+        return currentLocation;
     }
 }

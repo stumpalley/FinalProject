@@ -11,6 +11,7 @@ public class PlayListener implements ActionListener{
     private Location loc;
     private ArrayList<TransitionInterface> transitions;
     private int[] coord = new int[2];
+    private Location currLocation;
 
     public PlayListener(MazeFrame m, int x, int y) {
         mazeFrame = m;
@@ -29,12 +30,16 @@ public class PlayListener implements ActionListener{
                 mazeButtons[i][j].setEnabled(false);
             }
         }
+        mazeButtons[mazeFrame.getCurrLocation().getX()][mazeFrame.getCurrLocation().getY()].setBackground(Color.gray); 
+        mazeFrame.setLocation(mazeFrame.getMaze().getLocationAt(posX, posY));
+        mazeButtons[posX][posY].setBackground(Color.yellow);
 
         loc.generateTransitions();
         transitions = loc.getTransitions();
 
         for (TransitionInterface i : transitions) {
             mazeButtons[i.getNextLocation().getX()][i.getNextLocation().getY()].setEnabled(true);
+            mazeButtons[i.getNextLocation().getX()][i.getNextLocation().getY()].setForeground(mazeFrame.getMaze().getCurrLocColor(i.getNextLocation().getX(), i.getNextLocation().getY()));
         }
         if(loc.getInfo().getStatus() == 2) {
             mazeFrame.setWin();
