@@ -56,4 +56,7 @@ public class Transition1 implements TransitionInterface {
         return false;
     }
 
+    public int getCurrDirection() {
+        return 0;
+    }
 }

@@ -17,6 +17,17 @@ public class SelectionFrame extends JFrame {
         ct.setBackground(Color.white);
         ct.setLayout(new FlowLayout());
 
+        // Title Panel
+        JPanel tp1 = new JPanel();
+        tp1.setBackground(Color.white);
+        JLabel tpLbl1 = new JLabel("Welcome to Alex Yan's Maze Game");
+        tp1.setLocation(400,200);;
+        tpLbl1.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,40));
+
+        tp1.add(tpLbl1);
+        ct.add(tp1,JPanel.CENTER_ALIGNMENT);
+
+
         // create start panel
         JPanel mP = new JPanel();
         mP.setBackground(Color.white);
@@ -43,5 +54,15 @@ public class SelectionFrame extends JFrame {
         SelectionPanel sp = new SelectionPanel(selectionButton, this);
 
         selectionButton.addActionListener(sp);
+
+        // Title Panel
+        JPanel tp = new JPanel();
+        tp.setBackground(Color.white);
+
+        JLabel tpLbl = new JLabel("These Mazes Will Bend Your Mind!!!!!");
+        tpLbl.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,40));
+
+        tp.add(tpLbl);
+        ct.add(tp,JPanel.CENTER_ALIGNMENT);
     }
 }

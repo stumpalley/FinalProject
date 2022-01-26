@@ -37,11 +37,14 @@ public class Location {
     }
 
     public void generateTransitions() {
+        //System.out.println(info.getMaze().getNumDirections());
         for (int i = 0; i < info.getMaze().getNumDirections(); i++){
-            CreateTransition c = new CreateTransition();
-            TransitionInterface trans = c.MakeTransition(new State(this),i);
-            if (!trans.outOfBounds()) {
-                transitions.add(trans);
+            for (int j = 0; j < info.getMaze().getLoopNumber(); j++){
+                CreateTransition c = new CreateTransition();
+                TransitionInterface trans = c.MakeTransition(new State(this),i,j);
+                if (!trans.outOfBounds()) {
+                    transitions.add(trans);
+                }
             }
         }
     }

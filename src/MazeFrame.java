@@ -1,6 +1,23 @@
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.ArrayList;
 import java.awt.*;
 
+import javax.swing.Box;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.*;
+
+import java.awt.Font;
 
 
 public class MazeFrame extends JFrame {
@@ -9,6 +26,7 @@ public class MazeFrame extends JFrame {
     private JPanel text = new JPanel();
     private JLabel label = new JLabel("Keep Playing");
     private Location currentLocation;
+    private int plays = 0;
     
     private JButton[][] mazeButtons;
 
@@ -39,7 +57,7 @@ public class MazeFrame extends JFrame {
             
         }
 
-        // create mazeSelectionPanel
+        // create mazeSelectionPanel and solution button
         JPanel mSP = new JPanel();
         mSP.setBackground(Color.white);
         mSP.setLayout(new FlowLayout());
@@ -64,6 +82,19 @@ public class MazeFrame extends JFrame {
 
         selectionButton.addActionListener(sp);
 
+        // create UNDO button
+        JButton hintButton = new JButton("Hint");
+        mSP.add(hintButton);
+
+        HintListener hl = new HintListener(this);
+        hintButton.addActionListener(hl);
+
+        // create How to Play Button
+        JButton howToPlay = new JButton("How to Play");
+        mSP.add(howToPlay);
+
+        HowToListener htl = new HowToListener(this);
+        howToPlay.addActionListener(htl);
 
 
     }
@@ -78,6 +109,22 @@ public class MazeFrame extends JFrame {
 
     public void setWin() {
         label.setText("You win!");
+/* 
+        URL url = ct.getClass().getResource("src\\wingif.gif");
+        Icon myImgIcon2 = new ImageIcon(url);  */
+        Box panel2 = Box.createVerticalBox();
+        ImageIcon img = new ImageIcon("src\\winner.jpg");
+        JLabel imageLb2 = new JLabel(img);
+        JLabel textLb2 = new JLabel("<html>YOU WIN!!!!!!!<br/>Now open another maze!</html>");
+        textLb2.setFont(new Font("Hiragino Mincho Pro", Font.PLAIN, 30));
+            
+            panel2.add(imageLb2, JLabel.CENTER_ALIGNMENT);
+            panel2.add(textLb2, JLabel.CENTER_ALIGNMENT);
+            //component.add(imageLbl, BorderLayout.CENTER);
+            JOptionPane.showMessageDialog(ct,
+                
+                panel2, "How to Play",
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     public void setSolution() {
@@ -90,5 +137,13 @@ public class MazeFrame extends JFrame {
 
     public Location getCurrLocation() {
         return currentLocation;
+    }
+
+    public void setPlays(int i) {
+        plays += i;
+    }
+
+    public int getPlays() {
+        return plays;
     }
 }

@@ -45,6 +45,7 @@ public class PlayListener implements ActionListener{
             mazeFrame.setWin();
             mazeButtons[posX][posY].setEnabled(false);
         }
+        mazeFrame.setPlays(1);
         mazeFrame.repaint();
     }
 }

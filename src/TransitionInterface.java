@@ -4,4 +4,5 @@ public interface TransitionInterface {
     public Location getNextLocation();
     public Location getCurrLocation();
     public State getCurrState();
+    public int getCurrDirection();
 }

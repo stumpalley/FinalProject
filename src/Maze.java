@@ -9,6 +9,7 @@ public abstract class Maze {
     private int type = 0;
     private int[] start = new int[2];
     private int[] goal = new int[2];
+    private int loopNumber = 1;
 
     public Maze(int height, int width) {
         mazeHeight = height;
@@ -85,6 +86,14 @@ public abstract class Maze {
     
     public void setNumDirections(int i) {
         numDirections = i;
+    }
+
+    public int getLoopNumber() {
+        return loopNumber;
+    }
+
+    public void setLoopNumber(int i) {
+        loopNumber = i;
     }
 
     

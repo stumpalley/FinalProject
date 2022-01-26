@@ -24,10 +24,10 @@ public class Transition2 implements TransitionInterface {
         st = s;
         currLoc = st.getLocation();
         direction = s.getInfo().getMaze().getValue(currLoc.getX(), currLoc.getY());
-        System.out.println(direction);
+        //System.out.println(direction);
         getDirection();
-        System.out.println("CUYRRENT: " +currLoc.getX() +" " +currLoc.getY());
-        System.out.println(directions[0][1] +" " +directions[0][0]);
+        //System.out.println("CUYRRENT: " +currLoc.getX() +" " +currLoc.getY());
+       // System.out.println(directions[0][1] +" " +directions[0][0]);
         newX = currLoc.getX() + (directions[0][1] * (dir + 1));
         newY = currLoc.getY() + (directions[0][0] * (dir + 1));
         
@@ -37,7 +37,7 @@ public class Transition2 implements TransitionInterface {
                     if(st.getInfo().getMaze().getBoardDataAt(currLoc.getX(), currLoc.getY()) != st.getInfo().getMaze().getBoardDataAt(newX, newY)){
                         // nextLoc = new Location(newX, newY, currLoc.getInfo().getMaze().getInfoAt(newX, newY));
                         nextLoc = st.getInfo().getMaze().getLocationAt(newX, newY);
-                        System.out.println(newX +" " +newY);
+                        //System.out.println(newX +" " +newY);
                     }
                 }
             }
@@ -68,6 +68,10 @@ public class Transition2 implements TransitionInterface {
             return true;
         }
         return false;
+    }
+
+    public int getCurrDirection() {
+        return 0;
     }
 
     private void getDirection() {
