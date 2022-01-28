@@ -155,7 +155,7 @@ public class Maze2 extends Maze {
                 button.setFont(new Font("Serif", Font.PLAIN, 50));
                 button.setOpaque(true);
                 button.setPreferredSize(new Dimension(100,100));
-                button.setBackground(new Color(255,253,208));
+                button.setBackground(new Color(255,255,246));
                 
                 if (colors[boardColor[i][j]] == 0){
                     button.setUI(new MetalButtonUI() {

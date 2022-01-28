@@ -18,7 +18,7 @@ public abstract class Maze {
 
     public abstract int getValue(int x, int y);
     
-    public abstract void init();
+    public abstract void init() throws Exception;
 
     public abstract int[][] getBoard();
 

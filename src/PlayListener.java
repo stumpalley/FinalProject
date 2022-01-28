@@ -30,6 +30,8 @@ public class PlayListener implements ActionListener{
                 mazeButtons[i][j].setEnabled(false);
             }
         }
+
+        mazeFrame.getStack().push(mazeFrame.getMaze().getLocationAt(posX, posY));
         mazeButtons[mazeFrame.getCurrLocation().getX()][mazeFrame.getCurrLocation().getY()].setBackground(Color.gray); 
         mazeFrame.setLocation(mazeFrame.getMaze().getLocationAt(posX, posY));
         mazeButtons[posX][posY].setBackground(Color.yellow);

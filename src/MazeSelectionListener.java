@@ -19,7 +19,12 @@ public class MazeSelectionListener extends JFrame implements ActionListener {
         if (action.equals("Maze 1")) {
             
             selection = new Maze1();
-            selection.init();
+            try {
+                selection.init();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             MazeFrame frame = new MazeFrame(selection);
             frame.pack();
             frame.setVisible(true);
@@ -49,7 +54,12 @@ public class MazeSelectionListener extends JFrame implements ActionListener {
         else if (action.equals("Maze 2")) {
             
             selection = new Maze2();
-            selection.init();
+            try {
+                selection.init();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             MazeFrame frame = new MazeFrame(selection);
             frame.pack();
             frame.setVisible(true);
@@ -78,7 +88,12 @@ public class MazeSelectionListener extends JFrame implements ActionListener {
         else if (action.equals("Maze 3")) {
             
             selection = new Maze3();
-            selection.init();
+            try {
+                selection.init();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             MazeFrame frame = new MazeFrame(selection);
             frame.pack();
             frame.setVisible(true);

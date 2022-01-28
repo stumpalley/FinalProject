@@ -32,7 +32,8 @@ public class HintListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // set start to curr pos
         Location curr = frame.getCurrLocation();
-        //maze.setStart(curr.getX(), curr.getY());
+        int stX = maze.getStartX(); int stY = maze.getStartY();
+        maze.setStart(curr.getX(), curr.getY());
 
 
 
@@ -60,7 +61,7 @@ public class HintListener implements ActionListener {
         State s = solver.getFinalState();
         State next = s;
         int plays = frame.getPlays();
-        for (int i = 0; i < solver.getSteps() - plays + 1; i++) {
+        while(s.getParent() != null) {
             next = s;
             s=s.getParent();
         }
@@ -68,6 +69,8 @@ public class HintListener implements ActionListener {
         mazeButtons[next.getLocation().getX()][next.getLocation().getY()].setEnabled(true);
         int currX = frame.getCurrLocation().getX(); int currY = frame.getCurrLocation().getY();
         mazeButtons[next.getLocation().getX()][next.getLocation().getY()].setBackground(Color.yellow);
+
+        maze.setStart(stX, stY);
 
     }
 }

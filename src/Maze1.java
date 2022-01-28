@@ -1,16 +1,14 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 import javax.swing.*;
 
 public class Maze1 extends Maze {
-    private int[][] board = {{6, 3, 2, 4, 6, 2, 5},
-                            {3, 5, 2, 4, 4, 4, 1},
-                            {3, 3, 2 ,3 ,3 ,4 ,2},
-                            {3 ,4 ,1, 2, 2 ,5 ,3},
-                            {4 ,4, 4 ,2 ,3, 2, 4},
-                            {2 ,5, 4, 2 ,3 ,2, 5},
-                            {3, 5, 2, 1, 4, 4, 0}};
+    private int[][] board;
     private Location[][] locations = new Location[getHeight()][getWidth()];
     private Information[][] info = new Information[getHeight()][getWidth()];
     private int[][] directions = new int[4][2];
@@ -24,8 +22,29 @@ public class Maze1 extends Maze {
         setStart(0, 0); // breaks after 1,0
     }
 
-    public void init() {
+    public void init() throws Exception {
         setNumDirections(4);
+
+        Scanner sc = new Scanner(new BufferedReader(new FileReader("src\\Maze1.dat")));
+        String[] dim = sc.nextLine().trim().split(" ");
+        int height = Integer.parseInt(dim[0]);
+        int width = Integer.parseInt(dim[1]);
+        setHeight(height); setWidth(width);
+
+        board = new int[height][width];
+
+        while(sc.hasNextLine()) {
+            for (int i = 0; i < height; i++) {
+                String[] line = sc.nextLine().trim().split(" ");
+                for (int j = 0; j < line.length; j++) {
+                    board[i][j] = Integer.parseInt(line[j]);
+                }
+            }
+        }
+
+
+
+
         for (int i = 0; i < getWidth(); i++) {
             for (int j = 0; j < getHeight(); j++) {
                 Information in = new Information(i,j,this);

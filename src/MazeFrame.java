@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Stack;
 import java.awt.*;
 
 import javax.swing.Box;
@@ -27,6 +28,7 @@ public class MazeFrame extends JFrame {
     private JLabel label = new JLabel("Keep Playing");
     private Location currentLocation;
     private int plays = 0;
+    private Stack<Location> locations = new Stack<Location>();
     
     private JButton[][] mazeButtons;
 
@@ -89,6 +91,12 @@ public class MazeFrame extends JFrame {
         HintListener hl = new HintListener(this);
         hintButton.addActionListener(hl);
 
+        JButton undoButton = new JButton("Undo");
+        mSP.add(undoButton);
+
+        UndoListener ul = new UndoListener(this);
+        undoButton.addActionListener(ul);
+
         // create How to Play Button
         JButton howToPlay = new JButton("How to Play");
         mSP.add(howToPlay);
@@ -117,14 +125,14 @@ public class MazeFrame extends JFrame {
         JLabel imageLb2 = new JLabel(img);
         JLabel textLb2 = new JLabel("<html>YOU WIN!!!!!!!<br/>Now open another maze!</html>");
         textLb2.setFont(new Font("Hiragino Mincho Pro", Font.PLAIN, 30));
-            
-            panel2.add(imageLb2, JLabel.CENTER_ALIGNMENT);
-            panel2.add(textLb2, JLabel.CENTER_ALIGNMENT);
-            //component.add(imageLbl, BorderLayout.CENTER);
-            JOptionPane.showMessageDialog(ct,
-                
-                panel2, "How to Play",
-                JOptionPane.PLAIN_MESSAGE);
+        textLb2.setHorizontalAlignment(SwingConstants.CENTER);
+        textLb2.setVerticalAlignment(SwingConstants.CENTER);
+        panel2.add(imageLb2, JLabel.CENTER_ALIGNMENT);
+        panel2.add(textLb2, JLabel.CENTER);
+        //component.add(imageLbl, BorderLayout.CENTER);
+        JOptionPane.showMessageDialog(ct,
+            panel2, "How to Play",
+            JOptionPane.PLAIN_MESSAGE);
     }
 
     public void setSolution() {
@@ -145,5 +153,13 @@ public class MazeFrame extends JFrame {
 
     public int getPlays() {
         return plays;
+    }
+
+    public Stack<Location> getStack() {
+        return locations;
+    }
+
+    public void addToStack(Location l) {
+        locations.add(l);
     }
 }
